@@ -1,0 +1,73 @@
+<script type="text/javascript">
+  document.getElementById("button-add").onclick = () => {
+    eel.addCam();
+  };
+
+  /**
+   * @typedef {Object} CamParameters
+   * @property {number} x
+   * @property {number} y
+   * @property {number} z
+   * @property {number} rx
+   * @property {number} ry
+   * @property {number} rz
+   */
+  /**
+   * @param {CamParameters[]} params
+   */
+  const updateCurrentCamParameters = async (params) => {
+    const camParams = document.getElementById("cam_params");
+    camParams.innerHTML = ""; // クリア
+    params.forEach((param) => {
+      const camParam = document.createElement("tr");
+      camParam.innerHTML = `
+        <td>Current</td>
+        <td>${param.x}</td>
+        <td>${param.y}</td>
+        <td>${param.z}</td>
+        <td>${param.rx}</td>
+        <td>${param.ry}</td>
+        <td>${param.rz}</td>
+      `;
+      camParams.appendChild(camParam);
+    });
+  };
+
+  /**
+   * @typedef {Object} Cam
+   * @property {string} label
+   * @property {boolean} isLabel
+   * @property {number} x
+   * @property {number} y
+   * @property {number} z
+   * @property {number} rx
+   * @property {number} ry
+   * @property {number} rz
+   */
+  /**
+   * @param {Cam[]} cams
+   */
+  const updateRegisteredCams = async (cams) => {
+    const camList = document.getElementById("cam_list");
+    camList.innerHTML = ""; // クリア
+    cams.forEach((cam) => {
+      const camItem = document.createElement("tr");
+      if (cam.isLabel) {
+        camItem.innerHTML = `
+          <td>${cam.label}</td>
+        `;
+      } else {
+        camItem.innerHTML = `
+        <td>${cam.label}</td>
+        <td>${cam.x}</td>
+        <td>${cam.y}</td>
+        <td>${cam.z}</td>
+        <td>${cam.rx}</td>
+        <td>${cam.ry}</td>
+        <td>${cam.rz}</td>
+        `;
+      }
+      camList.appendChild(camItem);
+    });
+  };
+</script>

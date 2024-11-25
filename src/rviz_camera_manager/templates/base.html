@@ -1,0 +1,16 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    {% include 'components/styles.html' %}
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0">
+    <div class="container">{% block content %}{% endblock %}</div>
+
+    {% include 'components/footer.html' %}
+
+    <script type="text/javascript" src="/eel.js"></script>
+    {% include 'components/scripts.html' %}
+  </body>
+</html>

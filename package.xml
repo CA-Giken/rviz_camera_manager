@@ -18,6 +18,8 @@
   <depend>tf</depend>
   <depend>python3-yaml</depend>
   <depend>pyyaml</depend>
+  <depend>eel</depend>
+  <depend>typing-extensions</depend>
   
   <!-- The export tag contains other, unspecified, tags -->
   <export>
