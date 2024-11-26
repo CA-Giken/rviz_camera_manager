@@ -26,5 +26,15 @@ def render_template(template_name, **context):
 if __name__ == '__main__':
     render_template('index.html', title='視点管理ツール')
 
-    eel.init(os.path.join(package_path, 'dist/web'))
-    eel.start('index.html', size=(800, 600))
+    options = {
+        "host": "localhost",
+        "port": 8000,
+        'cmdline_args': ["--no-sandbox"],
+        'size': (800, 600)
+    }
+    dist_path = os.path.join(package_path, 'dist/web')
+    print("Starting Eel app...")
+    print("  dist path: ", dist_path)
+    print("  hosted at:", f"http://{options['host']}:{options['port']}")
+    eel.init(dist_path)
+    eel.start('index.html', **options) 
